@@ -1,11 +1,214 @@
-<html>
-  <head>
-      <titlr>
-    
-  </titlr>
-  </head>
-  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+     
+/* Center and scale the logos properly */
+.logo-gray {
+  max-height: 40px;
+  object-fit: contain;
+  /* Optional: Turns colored logos into grayscale like the design */
+  filter: grayscale(100%); 
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.logo-gray:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+/* Position the indicator dots below the slider rows */
+.carousel-inner {
+  padding-bottom: 50px;
+}
+
+/* Custom design for the circular indicator dots */
+.custom-indicators [data-bs-target] {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #d3d3d3; /* Light gray for inactive dots */
+  border: none;
+  opacity: 1;
+  margin: 0 5px;
+}
+
+/* Active red dot style matching the design */
+.custom-indicators .active {
+  background-color: #e53935 !important; 
+}
+
+</style>
+</head>
 <body>
-  <p> Hi Raghavendra G</p>
+    
+<nav class="navbar navbar-expand-lg bg-body-white p-4">
+  <div class="container">
+    <!-- Brand Name -->
+    <a class="navbar-brand fs-2 fw-bold" href="#">Presento<span class="text-danger">.</span></a>
+
+    <!-- Right Side Actions -->
+    <div class="d-flex align-items-center order-lg-last gap-2">
+      <button class="btn btn-danger" type="button">
+        Get Started
+      </button>
+
+      <!-- Mobile Toggle Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <!-- Collapsible Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav mb-2 mb-lg-0 gap-3 ms-auto pe-lg-4">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <!-- Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Dropdown--1</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown--2</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown--3</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown--4</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown--5</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown--6</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Wrapper section with custom column layout width -->
+<!-- Main Section Container (Handles overall height boundaries dynamically) -->
+<section class="hero-section text-white d-flex align-items-center py-5 min-vh-50" 
+         style="background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('imgs/Task-2-Hero-Bg.jpg') no-repeat center center / cover;">
+  <!-- 2. Content Node Layer (Brought forward using z-index) -->
+  <div class="container-fluid position-relative py-5" style="z-index: 2;">
+    <div class="row">
+      <!-- Limits layout width on desktop, expands safely to 100% on mobile screens -->
+      <div class="col-lg-5 col-md-8 px-4 ps-lg-5 ms-lg-4">
+        
+        <!-- Top Text Block -->
+        <div class="mb-4">
+          <h1 class="fw-bold lh-sm mb-3 display-5">
+            Bettter digital experience with Presento
+          </h1>
+          <!-- Text colored with white-75 opacity utility for premium contrast -->
+          <p class="fs-4 text-white-75 lh-base mb-0">
+            We are team of talented designers making websites with Bootstrap
+          </p>
+        </div>
+
+        <!-- Bottom Actions Block -->
+        <div class="d-flex align-items-center gap-3">
+          <button class="btn btn-danger px-4 py-2 fw-semibold rounded-2" type="button">
+            Get Started
+          </button>
+          
+          <a href="#" class="text-white link-danger fw-semibold text-decoration-none d-inline-flex align-items-center gap-2 fs-5 transition-all">
+            <i class="bi bi-play-circle text-danger fs-4"></i>
+            <span>Watch Video</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<div id="logoCarousel" class="carousel slide my-5" data-bs-ride="carousel" data-bs-interval="3000">
+  
+  <!-- Carousel Indicators (The dots below the logos) -->
+  <div class="carousel-indicators custom-indicators">
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+
+  <!-- Carousel Items -->
+  <div class="carousel-inner container">
+    
+    <!-- Slide 1 (Active) -->
+    <div class="carousel-item active">
+      <div class="row align-items-center justify-content-center text-center g-4">
+        <div class="col-4 col-md-2"><img src="imgs/client-1.png" class="img-fluid logo-gray" alt="Belimo"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-2.png" class="img-fluid logo-gray" alt="LifeGroups"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-3.png" class="img-fluid logo-gray" alt="Grabyo"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-4.png" class="img-fluid logo-gray" alt="Citrus"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-5.png" class="img-fluid logo-gray" alt="Trustly"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-6.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-7.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
+        <div class="col-4 col-md-2"><img src="imgs/client-8.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Optional Design Styles for Logos (Add to your CSS file for a cleaner template layout look) -->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script>
+    
+</script>
 </body>
 </html>
+
+
+
