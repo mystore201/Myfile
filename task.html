@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,138 +9,645 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <style>
-     
-/* Center and scale the logos properly */
+
+.page-section {
+  padding: 3rem 0;          /* phones */
+}
+
+@media (min-width: 768px) {
+  .page-section { padding: 4rem 0; }
+}
+
+@media (min-width: 992px) {
+  .page-section { padding: 5rem 0; }
+}
+
+
+
+
+
+
+    #track { --visible: 2; --w: calc(100% / var(--visible)); transition: transform .6s ease; }  /* mobile: 2 */
+@media (min-width: 768px) { #track { --visible: 4; } }                                      /* tablet: 4 */
+@media (min-width: 992px) { #track { --visible: 6; } }                                      /* desktop: 6 */
+
+.logo-item { flex: 0 0 var(--w); }
+
 .logo-gray {
   max-height: 40px;
-  object-fit: contain;
-  /* Optional: Turns colored logos into grayscale like the design */
-  filter: grayscale(100%); 
-  opacity: 0.6;
-  transition: all 0.3s ease;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: .6;
+  transition: all .3s ease;
+}
+.logo-gray:hover { filter: none; opacity: 1; }
+
+#dots button {
+  width: 10px; height: 10px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: #ddd;
+}
+#dots button.active { background: #e03131; }
+
+
+
+
+.watch-video {
+  color: #fff;                 /* white by default */
+  transition: color .3s ease;
+}
+.watch-video svg {
+  color: #dc3545;              /* red icon */
+}
+.watch-video:hover {
+  color: #dc3545;              /* text turns red on hover */
+}
+.watch-video {
+  font-size: 16px;
+font-weight:bolder;
 }
 
-.logo-gray:hover {
-  opacity: 1;
-  filter: grayscale(0%);
+
+
+
+
+
+
+.features-section {
+  --slant: 30px;                         /* how deep the slanted edge is (phones) */
+  background: #1c1c1c;
+  padding: 5rem 0;                       /* phones */
+  clip-path: polygon(
+    0 var(--slant),
+    100% 0,
+    100% calc(100% - var(--slant)),
+    0 100%
+  );
 }
 
-/* Position the indicator dots below the slider rows */
-.carousel-inner {
-  padding-bottom: 50px;
+@media (min-width: 768px) {
+  .features-section { --slant: 50px; padding: 6rem 0; }
 }
 
-/* Custom design for the circular indicator dots */
-.custom-indicators [data-bs-target] {
-  width: 10px;
-  height: 10px;
+@media (min-width: 992px) {
+  .features-section { --slant: 70px; padding: 8rem 0; }
+}
+
+.feature-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #dc3545;
+}
+
+
+
+
+
+
+.stat-card {
+  position: relative;
+}
+.stat-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);   /* centres the circle on the card's top edge */
+  width: 68px;
+  height: 68px;
+  color: #dc3545;                     /* red icon */
+}
+
+.stat-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.stat-card h2 {
+  color: #5f5f5f;
+  font-size: calc(1.8rem + 1vw);      /* smaller on phones, bigger on desktop */
+}
+
+
+
+
+
+
+
+
+.tab-btn {
+  background: #fff;
+  color: #111;
+  border: 1px solid #eee;
+  border-radius: 0;
+}
+
+.tab-btn:hover {
+  color: #dc3545;
+}
+
+/* the selected tab turns red */
+.tab-btn.active {
+  background: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+/* icon size: smaller on phones, bigger on desktop */
+.tab-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;          /* keeps the icon from being squeezed by long text */
+}
+
+@media (min-width: 992px) {
+  .tab-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+.services-section {
+  --slant: 30px;                       /* slant depth on phones */
+  background: #1c1c1c;
+  padding: 6rem 0;
+  clip-path: polygon(0 var(--slant), 100% 0, 100% calc(100% - var(--slant)), 0 100%);
+}
+
+@media (min-width: 768px) {
+  .services-section { --slant: 50px; padding: 7rem 0; }
+}
+@media (min-width: 992px) {
+  .services-section { --slant: 70px; padding: 8rem 0; }
+}
+
+/* small red line under the title */
+.title-line {
+  width: 50px;
+  height: 3px;
+  background: #dc3545;
+}
+
+.service-card {
+  background: #373737;
+}
+
+.service-icon {
+  font-size: 1.8rem;
+  color: #dc3545;
+  line-height: 1;
+  flex-shrink: 0;                      /* stops the icon being squeezed */
+}
+
+
+
+
+
+
+
+
+
+/* small red line under the title */
+.title-line {
+  width: 50px;
+  height: 3px;
+  background: #dc3545;
+}
+
+/* filter links */
+.filter-btn {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+}
+.filter-btn:hover,
+.filter-btn.active {
+  color: #dc3545;
+}
+
+/* images fill the 4:3 box without stretching */
+.portfolio-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+
+.title-line { width: 50px; height: 3px; background: #dc3545; }  /* skip if you already have it */
+
+/* sliding row: 1 card on phones, 2 on tablets, 3 on desktop */
+#testiTrack { --tw: 100%; transition: transform .6s ease; }
+@media (min-width: 768px) { #testiTrack { --tw: 50%; } }
+@media (min-width: 992px) { #testiTrack { --tw: 33.3333%; } }
+
+.testi-item { flex: 0 0 var(--tw); }
+
+/* soft shadow */
+.testi-card { box-shadow: 0 2px 12px rgba(0, 0, 0, .08); }
+
+.testi-img { width: 100px; height: 100px; object-fit: cover; }
+.testi-stars { color: #ffc107; margin: .5rem 0; letter-spacing: 2px; }
+
+/* bolder red quote marks */
+.testi-quote {
+  color: #dc3545;
+  opacity: .45;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 0;
+  vertical-align: middle;
+  margin: 0 .25rem;
+}
+
+/* dots */
+#testiDots button {
+  width: 10px; height: 10px; padding: 0;
+  border: 0; border-radius: 50%; background: #ddd;
+}
+#testiDots button.active { background: #dc3545; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1. DARK SECTION WITH SLANTED EDGES */
+.pricing-section {
+  background: #1c1c1c;
+  padding: 6rem 0;
+  clip-path: polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+
+/* 2. RED LINE UNDER THE TITLE */
+.title-line { width: 50px; height: 3px; background: #dc3545; }
+
+/* 3. NORMAL CARDS */
+.plan {
+  background: #373737;
+  padding: 2.5rem 2rem !important;     /* bigger space inside */
+}
+
+/* 4. MIDDLE CARD (red and taller) */
+.plan-featured { background: #dc3545; }
+@media (min-width: 768px) {
+  .plan-featured {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* 5. PLAN NAME */
+.plan h6 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+/* 6. PRICE */
+.price {
+  font-size: 3.5rem;                   /* big number */
+  color: #dc3545;
+  margin: .5rem 0 2rem;
+  line-height: 1;
+}
+.price sup  { font-size: 1.6rem; }
+.price span { font-size: 1.2rem; color: #999; }
+.plan-featured .price,
+.plan-featured .price span { color: #fff; }
+
+/* 7. FEATURE LIST */
+.plan-list { font-size: 1.1rem; margin-bottom: 2.5rem; }
+.plan-list li { padding: .6rem 0; }
+.plan-list b { margin-right: .6rem; }
+.plan-list .ok { color: #28a745; }
+.plan-list .na { color: #888; }
+
+/* 8. BUY NOW BUTTON */
+.plan-btn {
+  border-radius: 2px;
+  padding: .8rem 2.5rem;
+  font-size: 1.1rem;
+}
+.plan-btn:hover { background: #fff; color: #dc3545; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* 1. DARK SECTION WITH SLANTED EDGES */
+.pricing-section {
+  background: #1c1c1c;
+  padding: 8rem 0;                /* more space inside: title moves lower, cards move away from the slant */
+  margin-top: 4rem;               /* more white space above the dark section */
+  margin-bottom: 4rem;            /* more white space below it */
+  clip-path: polygon(0 100px, 100% 0, 100% calc(100% - 100px), 0 100%);   /* steeper slant like the original */
+}
+
+/* 2. RED LINE UNDER THE TITLE (skip if you already have it) */
+.title-line { width: 50px; height: 3px; background: #dc3545; }
+
+/* 3. NORMAL CARDS */
+.plan {
+  background: #373737;
+  padding: 2.5rem 2rem;
+}
+
+/* 4. MIDDLE CARD (red, taller on tablet and desktop) */
+.plan-featured { background: #dc3545; }
+@media (min-width: 768px) {
+  .plan-featured {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* 5. PLAN NAME */
+.plan h6 { font-size: 1.5rem; margin-bottom: 1rem; }
+
+/* 6. PRICE */
+.price {
+  font-size: 3.5rem;
+  color: #dc3545;
+  margin: .5rem 0 2rem;
+  line-height: 1;
+}
+.price sup  { font-size: 1.6rem; }
+.price span { font-size: 1.2rem; color: #999; }
+.plan-featured .price,
+.plan-featured .price span { color: #fff; }
+
+/* 7. FEATURE LIST */
+.plan-list { font-size: 1.1rem; margin-bottom: 2.5rem; }
+.plan-list li { padding: .6rem 0; }
+.plan-list b { margin-right: .6rem; }
+.plan-list .ok { color: #28a745; }
+.plan-list .na { color: #888; }
+
+/* 8. BUY NOW BUTTON */
+.plan-btn {
+  border-radius: 2px;
+  padding: .8rem 2.5rem;
+  font-size: 1.1rem;
+}
+.plan-btn:hover { background: #fff; color: #dc3545; }
+
+
+
+
+
+
+.faq-title { font-size: 1.6rem; }
+@media (min-width: 768px) { .faq-title { font-size: 2.2rem; } }
+.faq .accordion-item { border: 1px solid #e5e5e5; border-radius: 4px; margin-bottom: 1rem; overflow: hidden; }
+.faq .accordion-button { font-size: 1rem; font-weight: 500; color: #111; background: #fff; padding: 1rem; box-shadow: none; gap: .75rem; }
+@media (min-width: 768px) { .faq .accordion-button { font-size: 1.2rem; padding: 1.5rem; } }
+.faq .accordion-button:not(.collapsed) { color: var(--red); background: #fdf5f5; padding-bottom: .5rem; }
+.faq .accordion-item:has(.show) { border-color: #f3c7cb; background: #fdf5f5; }
+.faq .accordion-body { background: #fdf5f5; color: #444; padding: 0 1rem 1rem; }
+@media (min-width: 768px) { .faq .accordion-body { padding: 0 1.5rem 1.5rem; } }
+.faq .accordion-button::after { flex-shrink: 0; background-size: 1rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23333'%3E%3Cpath d='M5 2l6 6-6 6'/%3E%3C/svg%3E"); }
+.faq .accordion-button:not(.collapsed)::after { transform: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23dc3545'%3E%3Cpath d='M2 5l6 6 6-6'/%3E%3C/svg%3E"); }
+
+
+
+
+
+/* red line under the title (skip if you already have it) */
+.title-line { width: 50px; height: 3px; background: #dc3545; }
+
+/* dark section with slanted edges: small slant on phones, bigger on desktop */
+.team-section {
+  background: #1c1c1c;
+  padding: 6rem 0;
+  margin: 3rem 0;
+  clip-path: polygon(0 40px, 100% 0, 100% calc(100% - 40px), 0 100%);
+}
+@media (min-width: 992px) {
+  .team-section {
+    padding: 8rem 0;
+    clip-path: polygon(0 100px, 100% 0, 100% calc(100% - 100px), 0 100%);
+  }
+}
+
+/* card */
+.member {
+  background: #373737;
+  border-radius: 4px;
+  overflow: hidden;            /* keeps the photo corners rounded */
+  height: 100%;
+}
+
+/* all photos the same square shape, even if the files differ */
+.member img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* name and role box under the photo */
+.member-info {
+  padding: 1rem 1.2rem;
+}
+.member-info small {
+  color: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* red line under the title (skip if you already have it) */
+.title-line { width: 50px; height: 3px; background: #dc3545; }
+
+/* white boxes with a soft shadow */
+.info-card,
+.contact-form {
+  background: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, .08);
+  padding: 1.5rem;
+}
+.info-card { height: 100%; }
+.contact-form { padding: 2rem; }
+
+/* round icon with a dotted red border */
+/* round icon with a red DOTTED border */
+.info-icon {
+  width: 70px;
+  height: 70px;
+  border: 2px dotted #e35d6a;     /* 2px makes the dots visible; 1px looks solid */
   border-radius: 50%;
-  background-color: #d3d3d3; /* Light gray for inactive dots */
-  border: none;
-  opacity: 1;
-  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc3545;                 /* red icon inside */
+}
+.info-icon svg { width: 1.6rem; height: 1.6rem; }
+.info-icon svg { width: 1.6rem; height: 1.6rem; }
+
+/* form fields: square corners, thin border */
+.contact-form .form-control {
+  border-radius: 0;
+  padding: .9rem 1.2rem;
+  box-shadow: none;
+}
+.contact-form .form-control:focus { border-color: #dc3545; }
+.contact-form textarea { resize: vertical; }
+
+
+
+
+
+
+
+.site-footer {
+  background: #1c1c1c;
+  font-size: 1rem;
 }
 
-/* Active red dot style matching the design */
-.custom-indicators .active {
-  background-color: #e53935 !important; 
+.footer-logo { font-size: 2rem; letter-spacing: 1px; }
+
+/* link lists */
+.footer-links li { padding: .45rem 0; }
+.footer-links a {
+  color: rgba(255, 255, 255, .75);
+  text-decoration: none;
+  transition: color .3s;
 }
+.footer-links a:hover { color: #dc3545; }
+
+/* round social icons */
+.social {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(255, 255, 255, .5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, .8);
+  transition: all .3s;
+}
+.social svg { width: 1.2rem; height: 1.2rem; }
+.social:hover { background: #dc3545; border-color: #dc3545; color: #fff; }
+
+/* newsletter box: input and red button joined */
+.newsletter .form-control {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, .15);
+  border-radius: 4px 0 0 4px;
+  color: #fff;
+  box-shadow: none;
+}
+.newsletter .form-control:focus { border-color: #dc3545; }
+.newsletter .btn { border-radius: 0 4px 4px 0; padding: 0 1.2rem; }
+
+/* line and copyright */
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, .1); }
+
 
 </style>
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg bg-body-white p-4">
+ 
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg bg-white p-3 p-lg-4 sticky-top">
   <div class="container">
-    <!-- Brand Name -->
     <a class="navbar-brand fs-2 fw-bold" href="#">Presento<span class="text-danger">.</span></a>
-
-    <!-- Right Side Actions -->
     <div class="d-flex align-items-center order-lg-last gap-2">
-      <button class="btn btn-danger" type="button">
-        Get Started
-      </button>
-
-      <!-- Mobile Toggle Button -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <a href="#contact" class="btn btn-danger">Get Started</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
     </div>
-
-    <!-- Collapsible Navbar Links -->
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav mb-2 mb-lg-0 gap-3 ms-auto pe-lg-4">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Service</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Portfolio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Blog</a>
-        </li>
-        <!-- Dropdown Menu -->
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-lg-3 pe-lg-4">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">Blog</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Dropdown</a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Dropdown--1</a></li>
-            <li><a class="dropdown-item" href="#">Dropdown--2</a></li>
-            <li><a class="dropdown-item" href="#">Dropdown--3</a></li>
-            <li><a class="dropdown-item" href="#">Dropdown--4</a></li>
-            <li><a class="dropdown-item" href="#">Dropdown--5</a></li>
-            <li><a class="dropdown-item" href="#">Dropdown--6</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown 1</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown 2</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown 3</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!-- Wrapper section with custom column layout width -->
-<!-- Main Section Container (Handles overall height boundaries dynamically) -->
-<section class="hero-section text-white d-flex align-items-center py-5 min-vh-50" 
-         style="background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('imgs/Task-2-Hero-Bg.jpg') no-repeat center center / cover;">
-  <!-- 2. Content Node Layer (Brought forward using z-index) -->
-  <div class="container-fluid position-relative py-5" style="z-index: 2;">
+
+<section class="hero-section text-white d-flex align-items-center py-5"
+         style="min-height: 87vh; background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url('https://bootstrapmade.com/content/demo/Presento/assets/img/hero-bg.jpg') no-repeat center center / cover;">
+
+  <div class="container-fluid position-relative px-4" style="z-index: 2;">
     <div class="row">
-      <!-- Limits layout width on desktop, expands safely to 100% on mobile screens -->
-      <div class="col-lg-5 col-md-8 px-4 ps-lg-5 ms-lg-4">
-        
-        <!-- Top Text Block -->
+      <div class="col-lg-5 col-md-8 px-1 ps-lg-5 ms-lg-4">
+
         <div class="mb-4">
           <h1 class="fw-bold lh-sm mb-3 display-5">
-            Bettter digital experience with Presento
+            Better digital experience with Presento
           </h1>
-          <!-- Text colored with white-75 opacity utility for premium contrast -->
-          <p class="fs-4 text-white-75 lh-base mb-0">
+          <p class="fs-4 lh-base mb-0" style="color: rgba(255, 255, 255, 0.8);">
             We are team of talented designers making websites with Bootstrap
           </p>
         </div>
 
-        <!-- Bottom Actions Block -->
-        <div class="d-flex align-items-center gap-3">
+        <div class="d-flex flex-wrap align-items-center gap-3">
           <button class="btn btn-danger px-4 py-2 fw-semibold rounded-2" type="button">
             Get Started
           </button>
-          
-          <a href="#" class="text-white link-danger fw-semibold text-decoration-none d-inline-flex align-items-center gap-2 fs-5 transition-all">
-            <i class="bi bi-play-circle text-danger fs-4"></i>
-            <span>Watch Video</span>
-          </a>
+
+      <a href="#" class="watch-video fw-semibold text-decoration-none d-inline-flex align-items-center gap-2 ">
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+    <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445"/>
+  </svg>
+  <span> Watch Video</span>
+</a>
         </div>
 
       </div>
@@ -150,43 +659,845 @@
 
 
 
-
-<div id="logoCarousel" class="carousel slide my-5" data-bs-ride="carousel" data-bs-interval="3000">
-  
-  <!-- Carousel Indicators (The dots below the logos) -->
-  <div class="carousel-indicators custom-indicators">
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="0" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#logoCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="container my-5">
+  <div class="overflow-hidden">
+    <div id="track" class="d-flex">
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-7.png" class="img-fluid logo-gray" alt="Belimo"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-2.png" class="img-fluid logo-gray" alt="LifeGroups"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-3.png" class="img-fluid logo-gray" alt="Grabyo"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-4.png" class="img-fluid logo-gray" alt="Citrus"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-6.png" class="img-fluid logo-gray" alt="Trustly"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-6.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-1.png" class="img-fluid logo-gray" alt="Lilly"></div>
+      <div class="logo-item text-center px-3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/clients/client-8.png" class="img-fluid logo-gray" alt="myob"></div>
+    </div>
   </div>
 
-  <!-- Carousel Items -->
-  <div class="carousel-inner container">
-    
-    <!-- Slide 1 (Active) -->
-    <div class="carousel-item active">
-      <div class="row align-items-center justify-content-center text-center g-4">
-        <div class="col-4 col-md-2"><img src="imgs/client-1.png" class="img-fluid logo-gray" alt="Belimo"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-2.png" class="img-fluid logo-gray" alt="LifeGroups"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-3.png" class="img-fluid logo-gray" alt="Grabyo"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-4.png" class="img-fluid logo-gray" alt="Citrus"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-5.png" class="img-fluid logo-gray" alt="Trustly"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-6.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-7.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
-        <div class="col-4 col-md-2"><img src="imgs/client-8.png" class="img-fluid logo-gray" alt="Oldendorff"></div>
-      </div>
-    </div>
-
-
+  <div id="dots" class="d-flex justify-content-center gap-2 mt-4">
+    <button class="active" aria-label="Logo 1"></button>
+    <button aria-label="Logo 2"></button>
+    <button aria-label="Logo 3"></button>
+    <button aria-label="Logo 4"></button>
+    <button aria-label="Logo 5"></button>
+    <button aria-label="Logo 6"></button>
+    <button aria-label="Logo 7"></button>
+    <button aria-label="Logo 8"></button>
   </div>
 </div>
 
 
+
+
+<section class="features-section text-white">
+  <div class="container">
+    <div class="row align-items-center g-4 g-lg-5">
+
+      <!-- Left: heading, text, button -->
+      <div class="col-12 col-lg-5">
+        <h2 class="fw-bold display-6 mb-3 mb-md-4">Voluptatem dignissimos provident quasi</h2>
+        <p class="mb-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+        </p>
+        <a href="#" class="btn btn-outline-danger rounded-pill px-4 py-2 fw-semibold text-white d-inline-flex align-items-center gap-2">
+          ABOUT US
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right: 2 x 2 features -->
+      <div class="col-12 col-lg-7">
+        <div class="row g-4 g-lg-5">
+
+          <div class="col-12 col-sm-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-briefcase feature-icon" viewBox="0 0 16 16">
+              <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+            </svg>
+            <h5 class="fw-bold mt-3">Corporis voluptates sit</h5>
+            <p class="text-white-50 mb-0">Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-gem feature-icon" viewBox="0 0 16 16">
+              <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6zm11.386 3.785-1.806-2.41-.776 2.413zm-3.633.004.961-2.989H4.186l.963 2.995zM5.47 5.495 8 13.366l2.532-7.876zm-1.371-.999-.78-2.422-1.818 2.425zM1.499 5.5l5.113 6.817-2.192-6.82zm7.889 6.817 5.123-6.83-2.928.002z"/>
+            </svg>
+            <h5 class="fw-bold mt-3">Ullamco laboris nisi</h5>
+            <p class="text-white-50 mb-0">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-broadcast feature-icon" viewBox="0 0 16 16">
+              <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/>
+            </svg>
+            <h5 class="fw-bold mt-3">Labore consequatur</h5>
+            <p class="text-white-50 mb-0">Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-easel feature-icon" viewBox="0 0 16 16">
+              <path d="M8 0a.5.5 0 0 1 .473.337L9.046 2H14a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1h-1.85l1.323 3.837a.5.5 0 1 1-.946.326L11.092 11H8.5v3a.5.5 0 0 1-1 0v-3H4.908l-1.435 4.163a.5.5 0 1 1-.946-.326L3.85 11H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h4.954L7.527.337A.5.5 0 0 1 8 0M2 3v7h12V3z"/>
+            </svg>
+            <h5 class="fw-bold mt-3">Beatae veritatis</h5>
+            <p class="text-white-50 mb-0">Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="py-4 py-md-5">
+  <div class="container py-4">
+    <div class="row gx-4 gy-5 mt-3">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="stat-card text-center bg-white shadow rounded px-3 pb-4 pt-5">
+          <div class="stat-icon bg-white shadow rounded-circle d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+              <path d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"/>
+            </svg>
+          </div>
+          <h2 class="fw-bold">232</h2>
+          <p class="mb-0">Happy Clients</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="stat-card text-center bg-white shadow rounded px-3 pb-4 pt-5">
+          <div class="stat-icon bg-white shadow rounded-circle d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-journal-richtext" viewBox="0 0 16 16">
+              <path d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208M5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5"/>
+              <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2"/>
+              <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z"/>
+            </svg>
+          </div>
+          <h2 class="fw-bold">521</h2>
+          <p class="mb-0">Projects</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="stat-card text-center bg-white shadow rounded px-3 pb-4 pt-5">
+          <div class="stat-icon bg-white shadow rounded-circle d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+              <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+            </svg>
+          </div>
+          <h2 class="fw-bold">1463</h2>
+          <p class="mb-0">Hours Of Support</p>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="stat-card text-center bg-white shadow rounded px-3 pb-4 pt-5">
+          <div class="stat-icon bg-white shadow rounded-circle d-flex align-items-center justify-content-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+              <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4"/>
+            </svg>
+          </div>
+          <h2 class="fw-bold">15</h2>
+          <p class="mb-0">Hard Workers</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="py-5">
+  <div class="container">
+
+    <!-- Tab buttons -->
+    <div class="nav row g-3 mb-4" role="tablist">
+      <div class="col-12 col-sm-6 col-lg-3">
+        <button class="nav-link tab-btn active w-100 d-flex align-items-center gap-3 text-start p-3"
+                data-bs-toggle="pill" data-bs-target="#tab1" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="tab-icon" viewBox="0 0 16 16">
+
+  <path d="M3 2.5A1.5 1.5 0 0 1 4.5 1h1A1.5 1.5 0 0 1 7 2.5V5h2V2.5A1.5 1.5 0 0 1 10.5 1h1A1.5 1.5 0 0 1 13 2.5v2.382a.5.5 0 0 0 .276.447l.895.447A1.5 1.5 0 0 1 15 7.118V14.5a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 14.5v-3a.5.5 0 0 1 .146-.354l.854-.853V9.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v.793l.854.853A.5.5 0 0 1 7 11.5v3A1.5 1.5 0 0 1 5.5 16h-3A1.5 1.5 0 0 1 1 14.5V7.118a1.5 1.5 0 0 1 .83-1.342l.894-.447A.5.5 0 0 0 3 4.882zM4.5 2a.5.5 0 0 0-.5.5V3h2v-.5a.5.5 0 0 0-.5-.5zM6 4H4v.882a1.5 1.5 0 0 1-.83 1.342l-.894.447A.5.5 0 0 0 2 7.118V13h4v-1.293l-.854-.853A.5.5 0 0 1 5 10.5v-1A1.5 1.5 0 0 1 6.5 8h3A1.5 1.5 0 0 1 11 9.5v1a.5.5 0 0 1-.146.354l-.854.853V13h4V7.118a.5.5 0 0 0-.276-.447l-.895-.447A1.5 1.5 0 0 1 12 4.882V4h-2v1.5a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5zm4-1h2v-.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5zm4 11h-4v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5zm-8 0H2v.5a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5z"/>
+</svg>
+          <span class="fw-semibold fs-5">Modi sit est dela pireda nest</span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <button class="nav-link tab-btn w-100 d-flex align-items-center gap-3 text-start p-3"
+                data-bs-toggle="pill" data-bs-target="#tab2" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="tab-icon" viewBox="0 0 16 16">
+  <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5 8 5.961 14.154 3.5zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z"/>
+</svg>
+          <span class="fw-semibold fs-5">Unde praesenti mara setra le</span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <button class="nav-link tab-btn w-100 d-flex align-items-center gap-3 text-start p-3"
+                data-bs-toggle="pill" data-bs-target="#tab3" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="tab-icon" viewBox="0 0 16 16">  
+  <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg>
+          <span class="fw-semibold fs-5">Pariatur explica nitro dela</span>
+        </button>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3">
+        <button class="nav-link tab-btn w-100 d-flex align-items-center gap-3 text-start p-3"
+                data-bs-toggle="pill" data-bs-target="#tab4" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="tab-icon" viewBox="0 0 16 16">
+  <path d="M3.5 2A1.5 1.5 0 0 1 5 3.5V5H3.5a1.5 1.5 0 1 1 0-3M6 5V3.5A2.5 2.5 0 1 0 3.5 6H5v4H3.5A2.5 2.5 0 1 0 6 12.5V11h4v1.5a2.5 2.5 0 1 0 2.5-2.5H11V6h1.5A2.5 2.5 0 1 0 10 3.5V5zm4 1v4H6V6zm1-1V3.5A1.5 1.5 0 1 1 12.5 5zm0 6h1.5a1.5 1.5 0 1 1-1.5 1.5zm-6 0v1.5A1.5 1.5 0 1 1 3.5 11z"/>
+</svg>
+          <span class="fw-semibold fs-5">Nostrum qui dile node</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab content -->
+    <div class="tab-content">
+
+      <!-- Tab 1 -->
+      <div class="tab-pane fade show active" id="tab1">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <h3 class="fw-bold">Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <p class="fst-italic">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+            <ul class="list-unstyled">
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+            </ul>
+            <p>
+              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/working-1.jpg" class="img-fluid w-100" alt="Tab 1 image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2 -->
+      <div class="tab-pane fade" id="tab2">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <h3 class="fw-bold">Unde praesenti mara setra le pireda nest.</h3>
+            <p class="fst-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+            <ul class="list-unstyled">
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            </ul>
+            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/working-3.jpg" class="img-fluid w-100" alt="Tab 2 image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3 -->
+      <div class="tab-pane fade" id="tab3">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <h3 class="fw-bold">Pariatur explica nitro dela dignissimos provident.</h3>
+            <p class="fst-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+            <ul class="list-unstyled">
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            </ul>
+            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/working-2.jpg" class="img-fluid w-100" alt="Tab 3 image">
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4 -->
+      <div class="tab-pane fade" id="tab4">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-6">
+            <h3 class="fw-bold">Nostrum qui dile node voluptatem corporis sit.</h3>
+            <p class="fst-italic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+            <ul class="list-unstyled">
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+              <li class="d-flex gap-2 mb-2"><i class="bi bi-check2-all text-danger"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
+            </ul>
+            <p>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
+          </div>
+          <div class="col-lg-6">
+            <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/working-4.jpg" class="img-fluid w-100" alt="Tab 4 image">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="services-section text-white pt-5">
+  <div class="container">
+
+    <!-- Title -->
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase">Services</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="row g-3 g-md-4 justify-content-center">
+      <div class="col-12 col-lg-10">
+        <div class="row g-3 g-md-4">
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-briefcase service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Lorem Ipsum</h5>
+                <p class="mb-0 small">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-card-checklist service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Dolor Sitema</h5>
+                <p class="mb-0 small">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-bar-chart service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Sed ut perspiciatis</h5>
+                <p class="mb-0 small">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-binoculars service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Magni Dolores</h5>
+                <p class="mb-0 small">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-brightness-high service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Nemo Enim</h5>
+                <p class="mb-0 small">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="service-card d-flex gap-3 p-4 h-100">
+              <i class="bi bi-calendar4-week service-icon"></i>
+              <div>
+                <h5 class="fw-bold">Eiusmod Tempor</h5>
+                <p class="mb-0 small">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+<section class="page-section">
+  <div class="container">
+
+    <!-- Title -->
+    <div class="text-center mb-4">
+      <h2 class="fw-bold text-uppercase">Portfolio</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <!-- Filter links -->
+    <div id="filters" class="d-flex flex-wrap justify-content-center gap-3 gap-md-4 mb-4">
+      <button type="button" class="filter-btn active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="app">App</button>
+      <button type="button" class="filter-btn" data-filter="product">Product</button>
+      <button type="button" class="filter-btn" data-filter="branding">Branding</button>
+      <button type="button" class="filter-btn" data-filter="books">Books</button>
+    </div>
+
+    <!-- 12 images -->
+    <div class="row g-3 g-md-4">
+
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="app">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/app-1.jpg" alt="App 1"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="product">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/product-1.jpg" alt="Product 1"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="branding">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/branding-1.jpg" alt="Branding 1"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="books">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/books-1.jpg" alt="Books 1"></div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="app">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/app-2.jpg" alt="App 2"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="product">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/product-2.jpg" alt="Product 2"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="branding">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/branding-2.jpg" alt="Branding 2"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="books">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/books-2.jpg" alt="Books 2"></div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="app">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/app-3.jpg" alt="App 3"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="product">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/product-3.jpg" alt="Product 3"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="branding">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/branding-3.jpg" alt="Branding 3"></div>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-4 portfolio-item" data-category="books">
+        <div class="ratio ratio-4x3"><img src="https://bootstrapmade.com/content/demo/Presento/assets/img/portfolio/books-3.jpg" alt="Books 3"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="py-5">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase">Testimonials</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="overflow-hidden py-3">
+      <div id="testiTrack" class="d-flex">
+
+        <div class="testi-item px-2"><div class="bg-white testi-card p-4 h-100">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/testimonials/testimonials-1.jpg" class="testi-img rounded-circle mb-3" alt="Matt Brandon">
+          <h5 class="fw-bold mb-0">Matt Brandon</h5>
+          <small class="text-secondary">Freelancer</small>
+          <div class="testi-stars">★★★★★</div>
+          <p class="fst-italic mb-0"><span class="testi-quote">“</span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.<span class="testi-quote">”</span></p>
+        </div></div>
+
+        <div class="testi-item px-2"><div class="bg-white testi-card p-4 h-100">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/testimonials/testimonials-2.jpg" class="testi-img rounded-circle mb-3" alt="John Larson">
+          <h5 class="fw-bold mb-0">John Larson</h5>
+          <small class="text-secondary">Entrepreneur</small>
+          <div class="testi-stars">★★★★★</div>
+          <p class="fst-italic mb-0"><span class="testi-quote">“</span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.<span class="testi-quote">”</span></p>
+        </div></div>
+
+        <div class="testi-item px-2"><div class="bg-white testi-card p-4 h-100">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/testimonials/testimonials-3.jpg" class="testi-img rounded-circle mb-3" alt="Saul Goodman">
+          <h5 class="fw-bold mb-0">Saul Goodman</h5>
+          <small class="text-secondary">Ceo &amp; Founder</small>
+          <div class="testi-stars">★★★★★</div>
+          <p class="fst-italic mb-0"><span class="testi-quote">“</span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.<span class="testi-quote">”</span></p>
+        </div></div>
+
+        <div class="testi-item px-2"><div class="bg-white testi-card p-4 h-100">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/testimonials/testimonials-4.jpg" class="testi-img rounded-circle mb-3" alt="Sara Wilsson">
+          <h5 class="fw-bold mb-0">Sara Wilsson</h5>
+          <small class="text-secondary">Designer</small>
+          <div class="testi-stars">★★★★★</div>
+          <p class="fst-italic mb-0"><span class="testi-quote">“</span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.<span class="testi-quote">”</span></p>
+        </div></div>
+
+        <div class="testi-item px-2"><div class="bg-white testi-card p-4 h-100">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/testimonials/testimonials-5.jpg" class="testi-img rounded-circle mb-3" alt="Jena Karlis">
+          <h5 class="fw-bold mb-0">Jena Karlis</h5>
+          <small class="text-secondary">Store Owner</small>
+          <div class="testi-stars">★★★★★</div>
+          <p class="fst-italic mb-0"><span class="testi-quote">“</span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.<span class="testi-quote">”</span></p>
+        </div></div>
+
+      </div>
+    </div>
+
+    <div id="testiDots" class="d-flex justify-content-center gap-2 mt-3">
+      <button class="active" aria-label="Testimonial 1"></button>
+      <button aria-label="Testimonial 2"></button>
+      <button aria-label="Testimonial 3"></button>
+      <button aria-label="Testimonial 4"></button>
+      <button aria-label="Testimonial 5"></button>
+    </div>
+
+  </div>
+</section>
+
+
+
+<section class="pricing-section text-white">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase">Pricing</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="row g-3 g-md-0 align-items-center">
+
+      <!-- Free -->
+      <div class="col-12 col-md-4">
+        <div class="plan">
+          <h6 class="fw-bold">Free Plan</h6>
+          <div class="price"><sup>$</sup>0 <span>/ month</span></div>
+          <ul class="plan-list list-unstyled">
+            <li><b class="ok">✓</b> Quam adipiscing vitae proin</li>
+            <li><b class="ok">✓</b> Nec feugiat nisl pretium</li>
+            <li><b class="ok">✓</b> Nulla at volutpat diam uteera</li>
+            <li class="na"><b>✕</b> <s>Pharetra massa massa ultricies</s></li>
+            <li class="na"><b>✕</b> <s>Massa ultricies mi quis hendrerit</s></li>
+          </ul>
+          <div class="text-center"><a href="#" class="btn btn-outline-light plan-btn">Buy Now</a></div>
+        </div>
+      </div>
+
+      <!-- Business (featured) -->
+      <div class="col-12 col-md-4">
+        <div class="plan plan-featured">
+          <h6 class="fw-bold">Business Plan</h6>
+          <div class="price"><sup>$</sup>29 <span>/ month</span></div>
+          <ul class="plan-list list-unstyled">
+            <li><b>✓</b> Quam adipiscing vitae proin</li>
+            <li><b>✓</b> Nec feugiat nisl pretium</li>
+            <li><b>✓</b> Nulla at volutpat diam uteera</li>
+            <li><b>✓</b> Pharetra massa massa ultricies</li>
+            <li><b>✓</b> Massa ultricies mi quis hendrerit</li>
+          </ul>
+          <div class="text-center"><a href="#" class="btn btn-outline-light plan-btn">Buy Now</a></div>
+        </div>
+      </div>
+
+      <!-- Developer -->
+      <div class="col-12 col-md-4">
+        <div class="plan">
+          <h6 class="fw-bold">Developer Plan</h6>
+          <div class="price"><sup>$</sup>49 <span>/ month</span></div>
+          <ul class="plan-list list-unstyled">
+            <li><b class="ok">✓</b> Quam adipiscing vitae proin</li>
+            <li><b class="ok">✓</b> Nec feugiat nisl pretium</li>
+            <li><b class="ok">✓</b> Nulla at volutpat diam uteera</li>
+            <li><b class="ok">✓</b> Pharetra massa massa ultricies</li>
+            <li><b class="ok">✓</b> Massa ultricies mi quis hendrerit</li>
+          </ul>
+          <div class="text-center"><a href="#" class="btn btn-outline-light plan-btn">Buy Now</a></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<section id="faq" class="page-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase faq-title">Frequently Asked Questions</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+    <div class="accordion faq" id="faqList">
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">Non consectetur a erat nam at lectus urna duis?</button></h3>
+        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqList"><div class="accordion-body">Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">Feugiat scelerisque varius morbi enim nunc faucibus?</button></h3>
+        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">Dolor sit amet consectetur adipiscing elit pellentesque?</button></h3>
+        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla?</button></h3>
+        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">Tempus quam pellentesque nec nam aliquam sem et tortor?</button></h3>
+        <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">Perspiciatis quod quo quos nulla quo illum ullam?</button></h3>
+        <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqList"><div class="accordion-body">Enim ea facilis quaerat voluptas quidem et dolorem. Quis et consequatur non sed in suscipit sequi. Distinctio ipsam dolore et.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="team-section text-white">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase">Team</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="row g-4">
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="member">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/team/team-1.jpg" class="img-fluid w-100" alt="Walter White">
+          <div class="member-info">
+            <h5 class="fw-bold mb-1">Walter White</h5>
+            <small>Chief Executive Officer</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="member">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/team/team-2.jpg" class="img-fluid w-100" alt="Sarah Jhonson">
+          <div class="member-info">
+            <h5 class="fw-bold mb-1">Sarah Jhonson</h5>
+            <small>Product Manager</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="member">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/team/team-3.jpg" class="img-fluid w-100" alt="William Anderson">
+          <div class="member-info">
+            <h5 class="fw-bold mb-1">William Anderson</h5>
+            <small>CTO</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-lg-3">
+        <div class="member">
+          <img src="https://bootstrapmade.com/content/demo/Presento/assets/img/team/team-4.jpg" class="img-fluid w-100" alt="Amanda Jepson">
+          <div class="member-info">
+            <h5 class="fw-bold mb-1">Amanda Jepson</h5>
+            <small>Accountant</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+<section class="page-section">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-uppercase">Contact</h2>
+      <div class="title-line mx-auto mb-3"></div>
+      <p class="mb-0">Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="row g-4">
+
+      <!-- Left: info cards -->
+      <div class="col-12 col-lg-6">
+        <div class="row g-4">
+
+          <div class="col-12">
+            <div class="info-card text-center">
+              <div class="info-icon mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+                </svg>
+              </div>
+              <h5 class="fw-bold mt-3">Address</h5>
+              <p class="mb-0">A108 Adam Street, New York, NY 535022</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="info-card text-center">
+              <div class="info-icon mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+                </svg>
+              </div>
+              <h5 class="fw-bold mt-3">Call Us</h5>
+              <p class="mb-0">+1 5589 55488 55</p>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6">
+            <div class="info-card text-center">
+              <div class="info-icon mx-auto">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                </svg>
+              </div>
+              <h5 class="fw-bold mt-3">Email Us</h5>
+              <p class="mb-0">info@example.com</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div class="col-12 col-lg-6">
+        <form class="contact-form h-100" action="#" method="post">
+          <div class="row g-3">
+            <div class="col-12 col-md-6">
+              <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+            </div>
+            <div class="col-12 col-md-6">
+              <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            </div>
+            <div class="col-12">
+              <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            </div>
+            <div class="col-12">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="col-12 text-center">
+              <button type="submit" class="btn btn-danger rounded-pill px-4 py-2 fw-semibold">Send Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<footer class="site-footer text-white">
+  <div class="container">
+
+    <div class="row g-4 py-5">
+
+      <!-- Brand and contact -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h2 class="footer-logo fw-bold">Presento</h2>
+        <p class="mt-4 mb-3">
+          A108 Adam Street<br>
+          New York, NY 535022
+        </p>
+        <p class="mb-1"><strong>Phone:</strong> +1 5589 55488 55</p>
+        <p class="mb-4"><strong>Email:</strong> info@example.com</p>
+
+        <div class="d-flex gap-2">
+          <a href="#" class="social" aria-label="X">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg>
+          </a>
+          <a href="#" class="social" aria-label="Facebook">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg>
+          </a>
+          <a href="#" class="social" aria-label="Instagram">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg>
+          </a>
+          <a href="#" class="social" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Useful Links -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="fw-bold mb-4">Useful Links</h5>
+        <ul class="footer-links list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Privacy policy</a></li>
+        </ul>
+      </div>
+
+      <!-- Our Services -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <h5 class="fw-bold mb-4">Our Services</h5>
+        <ul class="footer-links list-unstyled">
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Web Development</a></li>
+          <li><a href="#">Product Management</a></li>
+          <li><a href="#">Marketing</a></li>
+          <li><a href="#">Graphic Design</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="col-12 col-md-6 col-lg-4">
+        <h5 class="fw-bold mb-4">Our Newsletter</h5>
+        <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
+        <form action="#" method="post" class="newsletter d-flex">
+          <input type="email" name="email" class="form-control" aria-label="Email" required>
+          <button type="submit" class="btn btn-danger">Subscribe</button>
+        </form>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom text-center py-4">
+      <p class="mb-1">© Copyright <strong>Presento</strong> All Rights Reserved</p>
+      <p class="mb-0 small">Designed by <a href="https://bootstrapmade.com/" class="text-danger text-decoration-none">BootstrapMade</a></p>
+    </div>
+
+  </div>
+</footer>
 
 
 
@@ -201,14 +1512,84 @@
 
 
 <!-- Optional Design Styles for Logos (Add to your CSS file for a cleaner template layout look) -->
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-<script>
-    
+
+    <script>
+  const track = document.getElementById("track");
+  const dots  = [...document.querySelectorAll("#dots button")];
+  let current = 0, timer;
+
+  track.innerHTML += track.innerHTML;   // repeat the 8 logos so the last dots never run out
+
+  function go(i) {
+    current = i;
+    track.style.transform = `translateX(calc(${-i} * var(--w)))`;
+    dots.forEach((d, n) => d.classList.toggle("active", n === i));
+  }
+
+  function autoplay() { timer = setInterval(() => go((current + 1) % 8), 3000); }
+
+  dots.forEach((d, i) => d.addEventListener("click", () => {
+    clearInterval(timer);
+    go(i);
+    autoplay();
+  }));
+
+  autoplay();
+
+
+
+
+
+
+
+
+
+ const buttons = document.querySelectorAll("#filters button");
+  const items   = document.querySelectorAll(".portfolio-item");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+      items.forEach(item => {
+        item.classList.toggle("d-none", filter !== "all" && item.dataset.category !== filter);
+      });
+    });
+  });
+
+
+
+
+
+(function () {
+  const tTrack = document.getElementById("testiTrack");
+  const tDots  = [...document.querySelectorAll("#testiDots button")];
+  let tCurrent = 0, tTimer;
+
+  tTrack.innerHTML += tTrack.innerHTML;   // repeat the 5 cards for the loop
+
+  function tGo(i) {
+    tCurrent = i;
+    tTrack.style.transform = `translateX(calc(${-i} * var(--tw)))`;
+    tDots.forEach((d, n) => d.classList.toggle("active", n === i));
+  }
+
+  function tAutoplay() { tTimer = setInterval(() => tGo((tCurrent + 1) % 5), 3000); }
+
+  tDots.forEach((d, i) => d.addEventListener("click", () => {
+    clearInterval(tTimer);
+    tGo(i);
+    tAutoplay();
+  }));
+
+  tAutoplay();
+})();
 </script>
+
+
+
 </body>
 </html>
-
-
-
